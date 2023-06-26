@@ -20,6 +20,7 @@ public class PartnerAssociate {
 	private String Email_id;
 	private DeckRole Role = DeckRole.Partner_Associate;
 
+
 	public PartnerAssociate() {
 		// default constructor
 	}

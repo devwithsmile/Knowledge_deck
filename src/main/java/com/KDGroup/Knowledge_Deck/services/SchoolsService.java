@@ -46,7 +46,7 @@ public class SchoolsService {
 
         schools.setId(schoolDetails.getId());
         schools.setName(schoolDetails.getName());
-        schools.setCutOff(schoolDetails.getCutOff());
+        schools.setcutoff(schoolDetails.getcutoff());
         schools.setEmail_id(schoolDetails.getEmail_id());
         schools.setPassword(schoolDetails.getPassword());
         schools.setPh_number(schoolDetails.getPh_number());

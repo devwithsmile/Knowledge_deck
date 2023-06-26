@@ -50,7 +50,8 @@ public class PartnerAssociateService {
         pAssociate.setName(PADetails.getName());
         pAssociate.setPassword(PADetails.getPassword());
         pAssociate.setPh_number(PADetails.getPh_number());
-        PADetails.setEmail_id(PADetails.getEmail_id());
+        pAssociate.setEmail_id(PADetails.getEmail_id());
+        pAssociate.setRole(PADetails.getRole());
 
         partnerAssociateRepository.save(pAssociate);
         return pAssociate;
