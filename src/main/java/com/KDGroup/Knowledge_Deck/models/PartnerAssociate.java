@@ -18,17 +18,19 @@ public class PartnerAssociate {
 	private String password;
 	private long ph_number;
 	private String Email_id;
+	private DeckRole Role = DeckRole.Partner_Associate;
 
 	public PartnerAssociate() {
 		// default constructor
 	}
 
-	public PartnerAssociate(Long id, String name, String password, long ph_number, String email_id) {
+	public PartnerAssociate(Long id, String name, String password, long ph_number, String email_id, DeckRole role) {
 		this.id = id;
 		this.name = name;
 		this.password = password;
 		this.ph_number = ph_number;
-		this.Email_id = email_id;
+		Email_id = email_id;
+		Role = role;
 	}
 
 	public Long getId() {
@@ -67,8 +69,17 @@ public class PartnerAssociate {
 		return Email_id;
 	}
 
-	public void setEmail_id(String Email_id) {
-		this.Email_id = Email_id;
+	public void setEmail_id(String email_id) {
+		Email_id = email_id;
 	}
+
+	public DeckRole getRole() {
+		return Role;
+	}
+
+	public void setRole(DeckRole role) {
+		Role = role;
+	}
+
 
 }
