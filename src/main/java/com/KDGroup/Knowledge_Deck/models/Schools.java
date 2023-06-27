@@ -19,6 +19,7 @@ public class Schools {
     private String password;
     private long ph_number;
     
+    
     @Column(name = "cutoff")
     private long cutoff;
 
