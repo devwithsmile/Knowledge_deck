@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.KDGroup.Knowledge_Deck.models.Schools;
-import com.KDGroup.Knowledge_Deck.services.SchoolsService;
+import com.KDGroup.Knowledge_Deck.serviceImplimentations.SchoolsServiceImp;
 
 @RestController
 @RequestMapping("/schools")
 public class SchoolsController {
 
-    private final SchoolsService schoolsService;
+    private final SchoolsServiceImp schoolsService;
 
-    public SchoolsController(SchoolsService schoolsService) {
+    public SchoolsController(SchoolsServiceImp schoolsService) {
         this.schoolsService = schoolsService;
     }
 

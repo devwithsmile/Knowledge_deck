@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.KDGroup.Knowledge_Deck.models.Students;
-import com.KDGroup.Knowledge_Deck.services.StudentService;
+import com.KDGroup.Knowledge_Deck.serviceImplimentations.StudentServiceImp;
 
 @RestController
 @RequestMapping("/students")
 public class StudentsController {
 
-    private final StudentService studentService;
+    private final StudentServiceImp studentService;
 
-    public StudentsController(StudentService studentService) {
+    public StudentsController(StudentServiceImp studentService) {
         this.studentService = studentService;
     }
 

@@ -13,15 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.KDGroup.Knowledge_Deck.models.PartnerAssociate;
-import com.KDGroup.Knowledge_Deck.services.PartnerAssociateService;
+import com.KDGroup.Knowledge_Deck.serviceImplimentations.PartnerAssociateServiceImp;
+
 
 @RestController
 @RequestMapping("partners")
 public class PartnerAssociateController {
 
-    private final PartnerAssociateService partnerService;
+    private final PartnerAssociateServiceImp partnerService;
 
-    public PartnerAssociateController(PartnerAssociateService partnerService) {
+    public PartnerAssociateController(PartnerAssociateServiceImp partnerService) {
         this.partnerService = partnerService;
     }
 
