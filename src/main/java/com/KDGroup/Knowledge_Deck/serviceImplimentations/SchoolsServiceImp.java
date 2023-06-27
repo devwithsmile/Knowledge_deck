@@ -13,6 +13,9 @@ import org.springframework.web.server.ResponseStatusException;
 import com.KDGroup.Knowledge_Deck.models.Schools;
 import com.KDGroup.Knowledge_Deck.repositories.SchoolsRepository;
 import com.KDGroup.Knowledge_Deck.services.SchoolsService;
+import com.KDGroup.Knowledge_Deck.web.Menu.Students.AdmissionForm;
+import com.KDGroup.Knowledge_Deck.web.Menu.Students.StudentHome;
+import com.KDGroup.Knowledge_Deck.web.Menu.Students.StudentProfile;
 
 @Service
 public class SchoolsServiceImp implements SchoolsService{
@@ -62,6 +65,24 @@ public class SchoolsServiceImp implements SchoolsService{
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "School not found"));
         schoolsRepository.delete(school);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @Override
+    public Schools saveHome(StudentHome studentHome) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'saveHome'");
+    }
+
+    @Override
+    public Schools saveForm(AdmissionForm admissionForm) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'saveForm'");
+    }
+
+    @Override
+    public Schools saveProfile(StudentProfile studentProfile) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'saveProfile'");
     }
 
 }

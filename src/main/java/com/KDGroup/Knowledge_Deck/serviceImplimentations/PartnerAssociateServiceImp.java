@@ -1,6 +1,8 @@
 package com.KDGroup.Knowledge_Deck.serviceImplimentations;
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -12,9 +14,14 @@ import org.springframework.web.server.ResponseStatusException;
 import com.KDGroup.Knowledge_Deck.models.PartnerAssociate;
 import com.KDGroup.Knowledge_Deck.repositories.PartnerAssociateRepository;
 import com.KDGroup.Knowledge_Deck.services.PartnerAssociateService;
+import com.KDGroup.Knowledge_Deck.web.Menu.Students.AdmissionForm;
+import com.KDGroup.Knowledge_Deck.web.Menu.Students.StudentHome;
+import com.KDGroup.Knowledge_Deck.web.Menu.Students.StudentProfile;
 
 @Service
-public class PartnerAssociateServiceImp implements PartnerAssociateService{
+public class PartnerAssociateServiceImp implements PartnerAssociateService {
+
+    @Autowired
     private final PartnerAssociateRepository partnerAssociateRepository;
 
     public PartnerAssociateServiceImp(PartnerAssociateRepository partnerAssociateRepository) {
@@ -67,6 +74,24 @@ public class PartnerAssociateServiceImp implements PartnerAssociateService{
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    
+    @Override
+    public PartnerAssociate saveHome(StudentHome studentHome) {
+        // TODO Auto-generated method stub
+
+        
+        throw new UnsupportedOperationException("Unimplemented method 'saveHome'");
+    }
+
+    @Override
+    public PartnerAssociate saveForm(AdmissionForm admissionForm) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'saveForm'");
+    }
+
+    @Override
+    public PartnerAssociate saveProfile(StudentProfile studentProfile) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'saveProfile'");
+    }
 
 }
