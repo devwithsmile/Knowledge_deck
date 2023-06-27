@@ -20,15 +20,15 @@ import com.KDGroup.Knowledge_Deck.serviceImplimentations.PartnerAssociateService
 @RequestMapping("partners")
 public class PartnerAssociateController {
 
-    private final PartnerAssociateServiceImp partnerService;
+    private final PartnerAssociateServiceImp partnerServiceImp;
 
-    public PartnerAssociateController(PartnerAssociateServiceImp partnerService) {
-        this.partnerService = partnerService;
+    public PartnerAssociateController(PartnerAssociateServiceImp partnerServiceImp) {
+        this.partnerServiceImp = partnerServiceImp;
     }
 
     @GetMapping("/all") // because on index of this I think it shud be the login page of PA.
     public ResponseEntity<List<PartnerAssociate>> getAllPartnerAssociates() {
-        List<PartnerAssociate> partnerAssociates = partnerService.getTotalAssociates();
+        List<PartnerAssociate> partnerAssociates = partnerServiceImp.getTotalAssociates();
         
         return new ResponseEntity<>(partnerAssociates, HttpStatus.OK);
 
@@ -36,26 +36,26 @@ public class PartnerAssociateController {
 
     @GetMapping("/{id}")
     public ResponseEntity<PartnerAssociate> getPartnerAssociateById(@PathVariable("id") Long id) {
-        PartnerAssociate partnerAssociate = partnerService.getPartnerAssociatebyID(id);
+        PartnerAssociate partnerAssociate = partnerServiceImp.getPartnerAssociatebyID(id);
         return new ResponseEntity<>(partnerAssociate, HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<PartnerAssociate> createPartnerAssociate(@RequestBody PartnerAssociate partnerAssociate) {
-        PartnerAssociate newPartnerAssociate = partnerService.createPartnerAssociate(partnerAssociate);
+        PartnerAssociate newPartnerAssociate = partnerServiceImp.createPartnerAssociate(partnerAssociate);
         return new ResponseEntity<>(newPartnerAssociate, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<PartnerAssociate> updateBook(@PathVariable("id") Long id,
             @RequestBody PartnerAssociate updatedPartnerAssociate) {
-        PartnerAssociate partnerAssociate = partnerService.updatedPartnerAssociate(id, updatedPartnerAssociate);
+        PartnerAssociate partnerAssociate = partnerServiceImp.updatedPartnerAssociate(id, updatedPartnerAssociate);
         return new ResponseEntity<>(partnerAssociate, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePartnerAssociate(@PathVariable("id") Long id) {
-        partnerService.deletePartnerAssociate(id);
+        partnerServiceImp.deletePartnerAssociate(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

@@ -1,4 +1,4 @@
-package com.KDGroup.Knowledge_Deck.serviceImplimentations;
+package com.KDGroup.Knowledge_Deck.service;
 
 import java.util.List;
 
@@ -12,14 +12,13 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.KDGroup.Knowledge_Deck.models.Schools;
 import com.KDGroup.Knowledge_Deck.repositories.SchoolsRepository;
-import com.KDGroup.Knowledge_Deck.services.SchoolsService;
 
 @Service
-public class SchoolsServiceImp implements SchoolsService{
+public class SchoolsService {
 
     private final SchoolsRepository schoolsRepository;
 
-    public SchoolsServiceImp(SchoolsRepository schoolsRepository) {
+    public SchoolsService(SchoolsRepository schoolsRepository) {
         this.schoolsRepository = schoolsRepository;
     }
 

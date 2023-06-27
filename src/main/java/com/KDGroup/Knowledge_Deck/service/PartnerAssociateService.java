@@ -1,4 +1,4 @@
-package com.KDGroup.Knowledge_Deck.serviceImplimentations;
+package com.KDGroup.Knowledge_Deck.service;
 
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -11,13 +11,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.KDGroup.Knowledge_Deck.models.PartnerAssociate;
 import com.KDGroup.Knowledge_Deck.repositories.PartnerAssociateRepository;
-import com.KDGroup.Knowledge_Deck.services.PartnerAssociateService;
 
 @Service
-public class PartnerAssociateServiceImp implements PartnerAssociateService{
+public class PartnerAssociateService {
     private final PartnerAssociateRepository partnerAssociateRepository;
 
-    public PartnerAssociateServiceImp(PartnerAssociateRepository partnerAssociateRepository) {
+    public PartnerAssociateService(PartnerAssociateRepository partnerAssociateRepository) {
         this.partnerAssociateRepository = partnerAssociateRepository;
     }
 

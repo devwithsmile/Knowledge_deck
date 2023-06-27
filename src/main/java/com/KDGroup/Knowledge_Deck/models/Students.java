@@ -4,10 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "Students")
+@Table(name = "Students",uniqueConstraints =@UniqueConstraint(columnNames = "email"))
 public class Students {
 
     @Id
@@ -17,9 +19,21 @@ public class Students {
     private String email;
     private String password;
     private long ph_number;
+    
+    //will have one school which either he is applying to or is enrolled in.
+    @OneToOne
+    private Schools schools;
 
     public Students() {
         // default constructor
+    }
+
+    public Schools getSchools() {
+        return schools;
+    }
+
+    public void setSchools(Schools schools) {
+        this.schools = schools;
     }
 
     public Students(Long id, String name, String email, String password, long ph_number) {
