@@ -1,6 +1,6 @@
-package com.KDGroup.Knowledge_Deck.Menu.Schools;
+package com.KDGroup.Knowledge_Deck.web.Menu.Schools;
 
-import com.KDGroup.Knowledge_Deck.Menu.PartnerAssociates.AdmissionForm2;
+import com.KDGroup.Knowledge_Deck.web.Menu.PartnerAssociates.AdmissionForm2;
 
 public class AdmissionForm3 {
     // studentform2 will be coming if manually accepted, revert back for payment

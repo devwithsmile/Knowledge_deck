@@ -20,6 +20,7 @@ public class PartnerAssociate {
 	private long ph_number;
 	private String Email_id;
 	private DeckRole Role = DeckRole.Partner_Associate;
+	
 
 
 	public PartnerAssociate() {

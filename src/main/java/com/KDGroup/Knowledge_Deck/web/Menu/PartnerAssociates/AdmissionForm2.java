@@ -1,7 +1,7 @@
-package com.KDGroup.Knowledge_Deck.Menu.PartnerAssociates;
+package com.KDGroup.Knowledge_Deck.web.Menu.PartnerAssociates;
 
-import com.KDGroup.Knowledge_Deck.Menu.Schools.AdmissionForm3;
-import com.KDGroup.Knowledge_Deck.Menu.Students.AdmissionForm;
+import com.KDGroup.Knowledge_Deck.web.Menu.Schools.AdmissionForm3;
+import com.KDGroup.Knowledge_Deck.web.Menu.Students.AdmissionForm;
 
 public class AdmissionForm2 {
     // students form wil come here get signed and passed to school

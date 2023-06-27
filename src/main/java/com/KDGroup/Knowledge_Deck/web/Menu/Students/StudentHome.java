@@ -1,7 +1,7 @@
-package com.KDGroup.Knowledge_Deck.Menu.Students;
+package com.KDGroup.Knowledge_Deck.web.Menu.Students;
 
-import com.KDGroup.Knowledge_Deck.Menu.PartnerAssociates.AdmissionForm2;
-import com.KDGroup.Knowledge_Deck.Menu.Schools.AdmissionForm3;
+import com.KDGroup.Knowledge_Deck.web.Menu.PartnerAssociates.AdmissionForm2;
+import com.KDGroup.Knowledge_Deck.web.Menu.Schools.AdmissionForm3;
 
 public class StudentHome {
 

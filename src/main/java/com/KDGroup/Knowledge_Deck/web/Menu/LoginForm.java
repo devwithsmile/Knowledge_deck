@@ -1,4 +1,4 @@
-package com.KDGroup.Knowledge_Deck.Menu;
+package com.KDGroup.Knowledge_Deck.web.Menu;
 
 import com.KDGroup.Knowledge_Deck.models.DeckRole;
 

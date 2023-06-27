@@ -1,4 +1,4 @@
-package com.KDGroup.Knowledge_Deck.Menu.Students;
+package com.KDGroup.Knowledge_Deck.web.Menu.Students;
 
 public class AdmissionForm {
 

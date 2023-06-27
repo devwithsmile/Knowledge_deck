@@ -1,4 +1,4 @@
-package com.KDGroup.Knowledge_Deck.Menu;
+package com.KDGroup.Knowledge_Deck.web.Menu;
 
 public class RegisterationForm {
 
