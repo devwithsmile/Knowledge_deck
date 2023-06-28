@@ -54,6 +54,8 @@ public class SchoolsServiceImp implements SchoolsService{
         schools.setEmail_id(schoolDetails.getEmail_id());
         schools.setPassword(schoolDetails.getPassword());
         schools.setPh_number(schoolDetails.getPh_number());
+        schools.setUniversity(schoolDetails.getUniversity());
+        schools.setCourse(schoolDetails.getCourse());
 
         schoolsRepository.save(schools);
         return schools;

@@ -23,6 +23,8 @@ public class Schools {
     private String Email_id;
     private String password;
     private long ph_number;
+    private String university;
+    private String course;
 
     @Column(name = "cutoff")
     private long cutoff;
@@ -32,18 +34,32 @@ public class Schools {
     @JoinTable(name = "School_student")
     private Collection<Students> students;
 
-    public Schools() {
-        // default constructor
-    }
-
-    public Schools(Long id, String name, String email_id, String password, long ph_number, long cutoff) {
-        super();
-        this.id = id;
+    public Schools(String name, String email_id, String password, long ph_number, String university,
+            Collection<Students> students, String course, long cutoff) {
         this.name = name;
         Email_id = email_id;
         this.password = password;
         this.ph_number = ph_number;
+        this.university = university;
+        this.students = students;
+        this.course = course;
         this.cutoff = cutoff;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
     }
 
     public Collection<Students> getStudents() {

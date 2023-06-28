@@ -10,6 +10,8 @@ public class StudentHome {
     private boolean login;
     private AdmissionForm2 form;
     private AdmissionForm3 revertReadyForm;
+    //have to take special care of this
+    private String topUniversity;
 
     public boolean isLogin() {
         return login;
@@ -33,6 +35,14 @@ public class StudentHome {
 
     public void setRevertReadyForm(AdmissionForm3 revertReadyForm) {
         this.revertReadyForm = revertReadyForm;
+    }
+
+    public String getTopUniversity() {
+        return topUniversity;
+    }
+
+    public void setTopUniversity(String topUniversity) {
+        this.topUniversity = topUniversity;
     }
 
 }
