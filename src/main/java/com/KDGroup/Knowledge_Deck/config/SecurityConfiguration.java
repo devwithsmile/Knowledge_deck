@@ -1,61 +1,27 @@
 package com.KDGroup.Knowledge_Deck.config;
 
+
+
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
-import org.springframework.security.provisioning.UserDetailsManager;
-
-@Configuration
-@EnableWebSecurity
+//@Configuration
 public class SecurityConfiguration {
 
-    @Autowired
-    private DataSource dataSource;
-
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider(UserDetailsService userDetailsService) {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService);
-        authProvider.setPasswordEncoder(passwordEncoder());
-        return authProvider;
-    }
-
-    @Bean
-    public UserDetailsManager userDetailsManager() {
-        JdbcUserDetailsManager userDetailsManager = new JdbcUserDetailsManager();
-        userDetailsManager.setDataSource(dataSource);
-        return userDetailsManager;
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService(DataSource dataSource) {
-        JdbcDaoImpl jdbcDaoImpl = new JdbcDaoImpl();
-        jdbcDaoImpl.setDataSource(dataSource);
-
-        jdbcDaoImpl.setUsersByUsernameQuery(
-                "SELECT email, password,phone_number, 1 as enabled FROM student_login WHERE email = ?"
-                        + " UNION SELECT email, password, null AS phone_number, 1 as enabled FROM school_login WHERE email = ?"
-                        + " UNION SELECT email, password, phone_number, 1 as enabled FROM Partner_associate_login WHERE email = ?");
-
-        jdbcDaoImpl.setAuthoritiesByUsernameQuery(
-                "SELECT email, 'ROLE_STUDENT' as role FROM student_login WHERE email = ?"
-                        + " UNION SELECT email, 'ROLE_SCHOOL' as role FROM school_login WHERE email = ?"
-                        + " UNION SELECT email, 'ROLE_PARTNER' as role FROM Partner_associate_login WHERE email = ?");
-
-        return jdbcDaoImpl;
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public DataSource dataSource() {
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+//        dataSource.setUrl("jdbc:mysql://localhost:3306/knowledge_deck");
+//        dataSource.setUsername("root");
+//        dataSource.setPassword("devonsql");
+//        return dataSource;
+//    }
+//
+//    @Bean
+//    public UserDetailsManager userDetailsManager(DataSource dataSource) {
+//        JdbcUserDetailsManager userDetailsManager = new JdbcUserDetailsManager(dataSource);
+//        userDetailsManager.setUsersByUsernameQuery("SELECT email_id, password, CASE WHEN student_type = 1 THEN 'ROLE_STUDENT' WHEN school_type = 1 THEN 'ROLE_SCHOOL' WHEN PA_type = 1 THEN 'ROLE_PARTNER' ELSE '' END as authorities FROM user_login_table WHERE email_id = ?");
+//        userDetailsManager.setAuthoritiesByUsernameQuery("SELECT email_id, CASE WHEN student_type = 1 THEN 'ROLE_STUDENT' WHEN school_type = 1 THEN 'ROLE_SCHOOL' WHEN PA_type = 1 THEN 'ROLE_PARTNER' ELSE '' END as authorities FROM user_login_table WHERE email_id = ?");
+//        return userDetailsManager;
+//    }
 }

@@ -13,14 +13,14 @@ import org.springframework.web.server.ResponseStatusException;
 import com.KDGroup.Knowledge_Deck.models.Schools;
 import com.KDGroup.Knowledge_Deck.repositories.SchoolsRepository;
 import com.KDGroup.Knowledge_Deck.services.SchoolsService;
-import com.KDGroup.Knowledge_Deck.web.Menu.Students.AdmissionForm;
-import com.KDGroup.Knowledge_Deck.web.Menu.Students.StudentHome;
-import com.KDGroup.Knowledge_Deck.web.Menu.Students.StudentProfile;
+import com.KDGroup.Knowledge_Deck.DTO.AdmissionForm;
+import com.KDGroup.Knowledge_Deck.DTO.StudentHome;
+import com.KDGroup.Knowledge_Deck.DTO.StudentProfile;
 
 @Service
 public class SchoolsServiceImp implements SchoolsService{
 
-    private final SchoolsRepository schoolsRepository;
+    private SchoolsRepository schoolsRepository;
 
     public SchoolsServiceImp(SchoolsRepository schoolsRepository) {
         this.schoolsRepository = schoolsRepository;
@@ -47,15 +47,6 @@ public class SchoolsServiceImp implements SchoolsService{
 
         Schools schools = schoolsRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "School not found"));
-
-        schools.setId(schoolDetails.getId());
-        schools.setName(schoolDetails.getName());
-        schools.setcutoff(schoolDetails.getcutoff());
-        schools.setEmail_id(schoolDetails.getEmail_id());
-        schools.setPassword(schoolDetails.getPassword());
-        schools.setPh_number(schoolDetails.getPh_number());
-        schools.setUniversity(schoolDetails.getUniversity());
-        schools.setCourse(schoolDetails.getCourse());
 
         schoolsRepository.save(schools);
         return schools;

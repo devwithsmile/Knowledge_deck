@@ -36,7 +36,7 @@ public class PartnerAssociateController {
 
     @GetMapping("/{id}")
     public ResponseEntity<PartnerAssociate> getPartnerAssociateById(@PathVariable("id") Long id) {
-        PartnerAssociate partnerAssociate = partnerServiceImp.getPartnerAssociatebyID(id);
+        PartnerAssociate partnerAssociate = partnerServiceImp.getPartnerAssociateByID(id);
         return new ResponseEntity<>(partnerAssociate, HttpStatus.OK);
     }
 
@@ -58,5 +58,9 @@ public class PartnerAssociateController {
         partnerServiceImp.deletePartnerAssociate(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    
+    
+    
+    
 
 }

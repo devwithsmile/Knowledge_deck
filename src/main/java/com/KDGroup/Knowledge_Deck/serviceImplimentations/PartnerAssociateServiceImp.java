@@ -14,9 +14,9 @@ import org.springframework.web.server.ResponseStatusException;
 import com.KDGroup.Knowledge_Deck.models.PartnerAssociate;
 import com.KDGroup.Knowledge_Deck.repositories.PartnerAssociateRepository;
 import com.KDGroup.Knowledge_Deck.services.PartnerAssociateService;
-import com.KDGroup.Knowledge_Deck.web.Menu.Students.AdmissionForm;
-import com.KDGroup.Knowledge_Deck.web.Menu.Students.StudentHome;
-import com.KDGroup.Knowledge_Deck.web.Menu.Students.StudentProfile;
+import com.KDGroup.Knowledge_Deck.DTO.AdmissionForm;
+import com.KDGroup.Knowledge_Deck.DTO.StudentHome;
+import com.KDGroup.Knowledge_Deck.DTO.StudentProfile;
 
 @Service
 public class PartnerAssociateServiceImp implements PartnerAssociateService {
@@ -32,11 +32,12 @@ public class PartnerAssociateServiceImp implements PartnerAssociateService {
 
     // create
     public PartnerAssociate createPartnerAssociate(PartnerAssociate PAS) {
+    	
         return partnerAssociateRepository.save(PAS);
     }
 
     // read one
-    public PartnerAssociate getPartnerAssociatebyID(Long id) {
+    public PartnerAssociate getPartnerAssociateByID(Long id) {
         PartnerAssociate PAS = partnerAssociateRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Partner Associate not found"));
 
@@ -53,13 +54,6 @@ public class PartnerAssociateServiceImp implements PartnerAssociateService {
             @Validated @RequestBody PartnerAssociate PADetails) {
         PartnerAssociate pAssociate = partnerAssociateRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Partner Associate not found"));
-
-        pAssociate.setId(PADetails.getId());
-        pAssociate.setName(PADetails.getName());
-        pAssociate.setPassword(PADetails.getPassword());
-        pAssociate.setPh_number(PADetails.getPh_number());
-        pAssociate.setEmail_id(PADetails.getEmail_id());
-        pAssociate.setRole(PADetails.getRole());
 
         partnerAssociateRepository.save(pAssociate);
         return pAssociate;
@@ -93,5 +87,7 @@ public class PartnerAssociateServiceImp implements PartnerAssociateService {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveProfile'");
     }
+    
+    
 
 }

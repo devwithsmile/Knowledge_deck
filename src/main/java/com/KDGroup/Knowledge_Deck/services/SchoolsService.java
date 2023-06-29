@@ -1,9 +1,9 @@
 package com.KDGroup.Knowledge_Deck.services;
 
 import com.KDGroup.Knowledge_Deck.models.Schools;
-import com.KDGroup.Knowledge_Deck.web.Menu.Students.AdmissionForm;
-import com.KDGroup.Knowledge_Deck.web.Menu.Students.StudentHome;
-import com.KDGroup.Knowledge_Deck.web.Menu.Students.StudentProfile;
+import com.KDGroup.Knowledge_Deck.DTO.AdmissionForm;
+import com.KDGroup.Knowledge_Deck.DTO.StudentHome;
+import com.KDGroup.Knowledge_Deck.DTO.StudentProfile;
 
 public interface SchoolsService {
     // to save Partner home details

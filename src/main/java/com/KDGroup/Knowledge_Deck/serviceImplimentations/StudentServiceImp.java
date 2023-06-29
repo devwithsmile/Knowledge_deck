@@ -13,9 +13,9 @@ import org.springframework.web.server.ResponseStatusException;
 import com.KDGroup.Knowledge_Deck.models.Students;
 import com.KDGroup.Knowledge_Deck.repositories.StudentsRepository;
 import com.KDGroup.Knowledge_Deck.services.StudentService;
-import com.KDGroup.Knowledge_Deck.web.Menu.Students.AdmissionForm;
-import com.KDGroup.Knowledge_Deck.web.Menu.Students.StudentHome;
-import com.KDGroup.Knowledge_Deck.web.Menu.Students.StudentProfile;
+import com.KDGroup.Knowledge_Deck.DTO.AdmissionForm;
+import com.KDGroup.Knowledge_Deck.DTO.StudentHome;
+import com.KDGroup.Knowledge_Deck.DTO.StudentProfile;
 
 @Service
 public class StudentServiceImp implements StudentService{
@@ -42,12 +42,6 @@ public class StudentServiceImp implements StudentService{
     public Students updateStudents(@PathVariable Long id, @Validated @RequestBody Students updatedStudents) {
         Students student = studentsRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not Found."));
-
-        student.setId(updatedStudents.getId());
-        student.setName(updatedStudents.getName());
-        student.setEmail(updatedStudents.getEmail());
-        student.setPh_number(updatedStudents.getPh_number());
-        student.setPassword(updatedStudents.getPassword());
 
         studentsRepository.save(student);
         return student;

@@ -1,4 +1,4 @@
-package com.KDGroup.Knowledge_Deck.web.Menu.Students;
+package com.KDGroup.Knowledge_Deck.DTO;
 
 public class StudentProfile {
     //thinking that there is no need of this as of now 
