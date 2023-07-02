@@ -8,6 +8,6 @@ import com.KDGroup.Knowledge_Deck.models.Students;
 @Repository
 public interface StudentsRepository extends JpaRepository<Students,Long>{
 
-    
 
+    Students findByEmailId(String emailId);
 }

@@ -1,5 +1,7 @@
 package com.KDGroup.Knowledge_Deck.controllers;
 import java.util.List;
+
+import com.KDGroup.Knowledge_Deck.serviceImplimentations.SchoolsServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,15 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.KDGroup.Knowledge_Deck.models.Schools;
-import com.KDGroup.Knowledge_Deck.serviceImplimentations.SchoolsServiceImp;
 
 @RestController
 @RequestMapping("/schools")
 public class SchoolsController {
 
-    private final SchoolsServiceImp schoolsService;
+    private final SchoolsServiceImpl schoolsService;
 
-    public SchoolsController(SchoolsServiceImp schoolsService) {
+    public SchoolsController(SchoolsServiceImpl schoolsService) {
         this.schoolsService = schoolsService;
     }
 

@@ -8,4 +8,5 @@ import com.KDGroup.Knowledge_Deck.models.PartnerAssociate;
 @Repository
 public interface PartnerAssociateRepository extends JpaRepository<PartnerAssociate,Long>{
 
+    PartnerAssociate findByEmailId(String emailId);
 }

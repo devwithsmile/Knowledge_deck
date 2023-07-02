@@ -2,6 +2,7 @@ package com.KDGroup.Knowledge_Deck.serviceImplimentations;
 
 import java.util.List;
 
+import com.KDGroup.Knowledge_Deck.DTO.StudentRegistrationDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,16 +14,13 @@ import org.springframework.web.server.ResponseStatusException;
 import com.KDGroup.Knowledge_Deck.models.Students;
 import com.KDGroup.Knowledge_Deck.repositories.StudentsRepository;
 import com.KDGroup.Knowledge_Deck.services.StudentService;
-import com.KDGroup.Knowledge_Deck.DTO.AdmissionForm;
-import com.KDGroup.Knowledge_Deck.DTO.StudentHome;
-import com.KDGroup.Knowledge_Deck.DTO.StudentProfile;
 
 @Service
-public class StudentServiceImp implements StudentService{
+public class StudentServiceImpl implements StudentService{
 
     private final StudentsRepository studentsRepository;
 
-    public StudentServiceImp(StudentsRepository studentsRepository) {
+    public StudentServiceImpl(StudentsRepository studentsRepository) {
         this.studentsRepository = studentsRepository;
     }
 
@@ -55,25 +53,31 @@ public class StudentServiceImp implements StudentService{
 
     }
 
-    // overriden methods
+    // overridden methods
 
     @Override
-    public Students saveHome(StudentHome studentHome) {
-        // TODO Auto-generated method stub
-       
-        throw new UnsupportedOperationException("Unimplemented method 'saveHome'");
+    public Students registerStudents(StudentRegistrationDTO registrationDTO) {
+        Students student = new Students();
+
+        student.setFirstName(registrationDTO.getFirstName());
+        student.setLastName(registrationDTO.getLastName());
+        student.setBirthDate(registrationDTO.getBirthDate());
+        student.setGender(registrationDTO.getGender());
+
+        student.setHomeAddress(registrationDTO.getHomeAddress());
+        student.setEmailId(registrationDTO.getEmailId());
+        student.setPhoneNumber(registrationDTO.getPhoneNumber());
+        student.setUsername(registrationDTO.getUsername());
+        student.setSchool(registrationDTO.getSchool());
+        return studentsRepository.save(student);
     }
 
     @Override
-    public Students saveForm(AdmissionForm admissionForm) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveForm'");
+    public boolean doesEmailExist(String emailId) {
+        Students student = studentsRepository.findByEmailId(emailId);
+        if (student == null){
+            return false;
+        }
+        return true;
     }
-
-    @Override
-    public Students saveProfile(StudentProfile studentProfile) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveProfile'");
-    }
-
 }

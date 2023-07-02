@@ -1,7 +1,9 @@
 package com.KDGroup.Knowledge_Deck.serviceImplimentations;
 
-import java.util.List;
-
+import com.KDGroup.Knowledge_Deck.DTO.PartnerAssociateRegistrationDTO;
+import com.KDGroup.Knowledge_Deck.models.PartnerAssociate;
+import com.KDGroup.Knowledge_Deck.repositories.PartnerAssociateRepository;
+import com.KDGroup.Knowledge_Deck.services.PartnerAssociateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,20 +13,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.KDGroup.Knowledge_Deck.models.PartnerAssociate;
-import com.KDGroup.Knowledge_Deck.repositories.PartnerAssociateRepository;
-import com.KDGroup.Knowledge_Deck.services.PartnerAssociateService;
-import com.KDGroup.Knowledge_Deck.DTO.AdmissionForm;
-import com.KDGroup.Knowledge_Deck.DTO.StudentHome;
-import com.KDGroup.Knowledge_Deck.DTO.StudentProfile;
+import java.util.List;
 
 @Service
-public class PartnerAssociateServiceImp implements PartnerAssociateService {
+public class PartnerAssociateServiceImpl implements PartnerAssociateService {
 
     @Autowired
     private final PartnerAssociateRepository partnerAssociateRepository;
 
-    public PartnerAssociateServiceImp(PartnerAssociateRepository partnerAssociateRepository) {
+    public PartnerAssociateServiceImpl(PartnerAssociateRepository partnerAssociateRepository) {
         this.partnerAssociateRepository = partnerAssociateRepository;
     }
 
@@ -32,7 +29,7 @@ public class PartnerAssociateServiceImp implements PartnerAssociateService {
 
     // create
     public PartnerAssociate createPartnerAssociate(PartnerAssociate PAS) {
-    	
+
         return partnerAssociateRepository.save(PAS);
     }
 
@@ -51,7 +48,7 @@ public class PartnerAssociateServiceImp implements PartnerAssociateService {
 
     // update one
     public PartnerAssociate updatedPartnerAssociate(@PathVariable Long id,
-            @Validated @RequestBody PartnerAssociate PADetails) {
+                                                    @Validated @RequestBody PartnerAssociate PADetails) {
         PartnerAssociate pAssociate = partnerAssociateRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Partner Associate not found"));
 
@@ -68,26 +65,28 @@ public class PartnerAssociateServiceImp implements PartnerAssociateService {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    @Override
-    public PartnerAssociate saveHome(StudentHome studentHome) {
-        // TODO Auto-generated method stub
 
-        
-        throw new UnsupportedOperationException("Unimplemented method 'saveHome'");
+    public String registerPartner(PartnerAssociateRegistrationDTO registrationDTO) {
+
+        PartnerAssociate partner = new PartnerAssociate();
+
+        partner.setFirstName(registrationDTO.getFirstName());
+        partner.setLastName(registrationDTO.getLastName());
+        partner.setAssociateFirmName(registrationDTO.getAssociateFirmName());
+        partner.setEmailId(registrationDTO.getEmailId());
+        partner.setUsername(registrationDTO.getUsername());
+        partner.setPhoneNumber(registrationDTO.getPhoneNumber());
+
+        partnerAssociateRepository.save(partner);
+        return "Partner saved";
     }
 
     @Override
-    public PartnerAssociate saveForm(AdmissionForm admissionForm) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveForm'");
+    public boolean doesEmailExist(String emailId) {
+        PartnerAssociate associate= partnerAssociateRepository.findByEmailId(emailId);
+        if (associate == null){
+            return false;
+        }
+        return true;
     }
-
-    @Override
-    public PartnerAssociate saveProfile(StudentProfile studentProfile) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveProfile'");
-    }
-    
-    
-
 }

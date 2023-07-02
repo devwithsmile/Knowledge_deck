@@ -2,6 +2,7 @@ package com.KDGroup.Knowledge_Deck.controllers;
 
 import java.util.List;
 
+import com.KDGroup.Knowledge_Deck.serviceImplimentations.StudentServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,19 +15,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.KDGroup.Knowledge_Deck.models.Students;
-import com.KDGroup.Knowledge_Deck.serviceImplimentations.StudentServiceImp;
 
 @RestController
 @RequestMapping("/students")
 public class StudentsController {
 
-    private final StudentServiceImp studentService;
+    private final StudentServiceImpl studentService;
 
-    public StudentsController(StudentServiceImp studentService) {
+    public StudentsController(StudentServiceImpl studentService) {
         this.studentService = studentService;
     }
 
-    @GetMapping("/all") // because on index of this I think it shud be the login page of PA.
+    @GetMapping
     public ResponseEntity<List<Students>> getAllStudents() {
         List<Students> students = studentService.getTotalStudents();
 

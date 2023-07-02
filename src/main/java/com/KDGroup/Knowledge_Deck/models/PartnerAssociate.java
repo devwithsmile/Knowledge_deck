@@ -8,24 +8,28 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
 @Entity
-@Table(name = "Partners", uniqueConstraints =@UniqueConstraint(columnNames = "Email_id") )
+@Table(name = "Partners", uniqueConstraints = {@UniqueConstraint(columnNames = {"emailId"}), @UniqueConstraint(columnNames = {"username"})})
 public class PartnerAssociate {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String name;
-	private String password;
-	private long ph_number;
-	private String Email_id;
-	private DeckRole Role = DeckRole.Partner_Associate;
-	
+	private String firstName;
+	private String lastName;
+	private String associateFirmName;
+	private String emailId;
+	private Long phoneNumber;
+
+	private String username; // was not in SRS
 
 }
