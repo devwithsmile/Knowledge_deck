@@ -58,4 +58,20 @@ public class LoginController {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Login failed for School");
         }
     }
+
+    @GetMapping("/admin")
+    public ResponseEntity<String> loginAdmin(@RequestBody LoginDTO loginDTO) {
+        String s = loginServiceImpl.userLogin(loginDTO);
+        switch (s) {
+            case "Admin":
+                return ResponseEntity.ok("Successful login for Admin");
+            case "user not found":
+            case "wrong password":
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Wrong credentials");
+            default:
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Login failed for School");
+        }
+    }
+
+
 }
