@@ -22,7 +22,7 @@ public class LoginController {
         String s = loginServiceImpl.userLogin(loginDTO);
         switch (s) {
             case "Student":
-                return ResponseEntity.ok("Successful login for Student");
+                return ResponseEntity.ok("Successful login for Student" );
             case "user not found":
             case "wrong password":
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Wrong credentials");

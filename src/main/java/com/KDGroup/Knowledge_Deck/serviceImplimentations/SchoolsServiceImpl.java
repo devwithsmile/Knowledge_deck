@@ -1,7 +1,9 @@
 package com.KDGroup.Knowledge_Deck.serviceImplimentations;
 
 import com.KDGroup.Knowledge_Deck.DTO.SchoolRegistrationDTO;
+import com.KDGroup.Knowledge_Deck.models.PartnerAssociate;
 import com.KDGroup.Knowledge_Deck.models.Schools;
+import com.KDGroup.Knowledge_Deck.models.Students;
 import com.KDGroup.Knowledge_Deck.repositories.SchoolsRepository;
 import com.KDGroup.Knowledge_Deck.services.SchoolsService;
 import org.springframework.http.HttpStatus;
@@ -51,6 +53,10 @@ public class SchoolsServiceImpl implements SchoolsService {
         school.setAddress(schoolDetails.getAddress());
         school.setPhoneNumber(schoolDetails.getPhoneNumber());
 
+        //these two are sets and mapped by student and courses models
+        school.setCourses(schoolDetails.getCourses());
+        school.setStudents(schoolDetails.getStudents());
+
         schoolsRepository.save(school);
         return school;
     }
@@ -87,6 +93,19 @@ public class SchoolsServiceImpl implements SchoolsService {
         }
         return true;
     }
+
+    @Override
+    public Schools getSchoolByEmailId(String email) {
+        Schools schoolsObj = schoolsRepository.findByEmailId(email);
+
+
+        if (schoolsObj == null) {
+            return null;
+        }
+        return schoolsObj;
+    }
+
+
 
 
 }

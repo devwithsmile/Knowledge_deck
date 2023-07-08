@@ -2,6 +2,7 @@ package com.KDGroup.Knowledge_Deck.serviceImplimentations;
 
 import com.KDGroup.Knowledge_Deck.DTO.PartnerAssociateRegistrationDTO;
 import com.KDGroup.Knowledge_Deck.models.PartnerAssociate;
+import com.KDGroup.Knowledge_Deck.models.Students;
 import com.KDGroup.Knowledge_Deck.repositories.PartnerAssociateRepository;
 import com.KDGroup.Knowledge_Deck.services.PartnerAssociateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,5 +89,16 @@ public class PartnerAssociateServiceImpl implements PartnerAssociateService {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public PartnerAssociate getPartnerByEmailId(String email) {
+        PartnerAssociate partnerObj = partnerAssociateRepository.findByEmailId(email);
+
+
+        if (partnerObj == null) {
+            return null;
+        }
+        return partnerObj;
     }
 }

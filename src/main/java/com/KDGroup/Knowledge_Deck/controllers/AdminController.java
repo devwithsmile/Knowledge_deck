@@ -23,7 +23,7 @@ public class AdminController {
 
     private final AdminServiceImpl adminServiceimpl;
 
-    public AdminController(StudentServiceImpl adminServiceImpl) {
+    public AdminController(AdminServiceImpl adminServiceImpl) {
         this.adminServiceimpl = AdminController.this.adminServiceimpl;
     }
 

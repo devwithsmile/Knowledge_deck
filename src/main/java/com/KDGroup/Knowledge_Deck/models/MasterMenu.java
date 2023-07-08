@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class MasterMenuStudent {
+public class MasterMenu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

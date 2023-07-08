@@ -1,6 +1,6 @@
 package com.KDGroup.Knowledge_Deck.DTO;
 
-
+import com.KDGroup.Knowledge_Deck.models.CourseInfo;
 import com.KDGroup.Knowledge_Deck.models.Schools;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,10 +9,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class StudentRegistrationDTO {
-
-    // all common ones and only these much are needed for students as of now
-
+public class StudentApplicationDTO {
     private String firstName;
     private String lastName;
     private Date birthDate;
@@ -22,11 +19,11 @@ public class StudentRegistrationDTO {
     private String homeAddress;
     private String emailId;
     private Long phoneNumber;
-    private Schools school; /* if present, insititute will auto-populate or else "other" but work of UI */
+    private Schools school;
+    private CourseInfo Course;
 
+    private boolean bookmarked  = false;
+    private boolean fessPaid = false;
 
-    private String username; /* user_table */
-    private String password; /* user_table */
-    private String confirmPassword;
 
 }

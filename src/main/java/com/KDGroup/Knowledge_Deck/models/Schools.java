@@ -1,14 +1,12 @@
 package com.KDGroup.Knowledge_Deck.models;
 
-import java.util.Collection;
-
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,15 +20,19 @@ public class Schools {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private  String schoolName;
+    private String schoolName;
     private String instituteName;
     private String emailId;
     private String address;
     private Long phoneNumber;
     private String username;
-    private  String password;
+    private String password;
 
-    // schools will have multiple students enrolled in them
+    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
+    private Set<CourseInfo> courses;
+
+    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
+    private Set<Students> students;
 
 
 }

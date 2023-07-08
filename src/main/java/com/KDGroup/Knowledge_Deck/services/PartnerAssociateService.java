@@ -5,4 +5,6 @@ import com.KDGroup.Knowledge_Deck.models.PartnerAssociate;
 public interface PartnerAssociateService {
 
     boolean doesEmailExist(String emailId);
+
+    PartnerAssociate getPartnerByEmailId(String email);
 }

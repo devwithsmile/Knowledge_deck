@@ -9,4 +9,7 @@ public interface StudentService {
     Students registerStudents(StudentRegistrationDTO registrationDTO);
 
     boolean doesEmailExist(String emailId);
+
+
+    Students getStudentsByEmailId(String email);
 }

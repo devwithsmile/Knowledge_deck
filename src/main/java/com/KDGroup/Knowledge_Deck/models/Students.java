@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.Date;
 
 @Getter
@@ -17,7 +15,6 @@ import java.util.Date;
 @Table(name = "Students", uniqueConstraints = {@UniqueConstraint(columnNames = {"emailId"}), @UniqueConstraint(columnNames = {"username"})})
 public class Students {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,15 +24,20 @@ public class Students {
     private Date birthDate;
     private String gender;
 
-
     private String homeAddress;
     private String emailId;
     private Long phoneNumber;
-    private String school;
+
+    @ManyToOne
+    @JoinColumn(name = "school_id")
+    private Schools school;
 
     private String username;
     private String password;
     private String confirmPassword;
 
+
+    private boolean bookmarked;
+    private boolean fessPaid;
 
 }
